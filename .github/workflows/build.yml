@@ -1,4 +1,4 @@
-name: Build and Push Add-on Image
+name: Build and Push Multi-Arch Add-on Image
 
 on:
   push:
@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout source
         uses: actions/checkout@v4
 
       - name: Log in to GHCR
@@ -22,13 +22,20 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
-      - name: Set up Buildx
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build and push
+      - name: Build and push multi-arch image
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./rtl_433
+          file: ./rtl_433/Dockerfile
           push: true
           platforms: linux/amd64,linux/arm/v7,linux/arm64
-          tags: ghcr.io/${{ github.repository_owner }}/rtl_433-upd-amd64:latest
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/rtl_433-upd-amd64:latest
+            ghcr.io/${{ github.repository_owner }}/rtl_433-upd-armv7:latest
+            ghcr.io/${{ github.repository_owner }}/rtl_433-upd-arm64:latest
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.description=Home Assistant rtl_433 add-on with EXPOSE 8433
