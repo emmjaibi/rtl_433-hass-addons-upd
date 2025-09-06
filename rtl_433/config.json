@@ -1,10 +1,9 @@
 {
-  "name": "rtl_433",
-  "image": "ghcr.io/pbkhrv/rtl_433-hass-addons-rtl_433-{arch}",
-  "version": "0.6.0",
+  "name": "rtl_433_upd",
+  "version": "0.6.0-mstr-0.0.1-250905",
   "slug": "rtl433",
   "description": "Receive wireless sensor data via an SDR dongle and rtl_433",
-  "url": "https://github.com/pbkhrv/rtl_433-hass-addons/tree/main/rtl_433",
+  "url": "https://github.com/emmjaibi/rtl_433-hass-addons-upd/tree/main/rtl_433",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "application",
   "boot": "auto",
@@ -13,6 +12,12 @@
   "services": ["mqtt:want"],
   "usb": true,
   "udev": true,
+  "ports": {
+    "8433/tcp": 8433
+  },
+  "ports_description": {
+    "8433/tcp": "rtl_433 web interface"
+  },
   "options": {
     "rtl_433_conf_file": "",
     "retain": true
