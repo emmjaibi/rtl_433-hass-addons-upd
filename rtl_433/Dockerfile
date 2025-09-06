@@ -64,4 +64,7 @@ COPY --from=soapy_hackrf_builder /usr/local/lib/SoapySDR/modules0.8/libHackRFSup
 COPY run.sh /
 RUN chmod a+x /run.sh
 
+# Expose rtl_433 web interface port
+EXPOSE 8433
+
 CMD [ "/run.sh" ]
