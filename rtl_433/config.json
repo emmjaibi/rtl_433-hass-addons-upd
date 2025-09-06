@@ -2,7 +2,7 @@
   "name": "rtl_433_upd",
   "version": "0.6.0-mstr-0.0.1-250905",
   "slug": "rtl433_upd",
-  "description": "Fork of rtl_433 add-on with exposed web interface on port 8433 and compiled with master branch"
+  "description": "Fork of rtl_433 add-on with exposed web interface on port 8433 and compiled with master branch",
   "url": "https://github.com/emmjaibi/rtl_433-hass-addons-upd/tree/main/rtl_433",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "application",
